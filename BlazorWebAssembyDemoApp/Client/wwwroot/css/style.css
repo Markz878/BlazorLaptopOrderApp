@@ -1,0 +1,113 @@
+﻿.checkbox {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+/* Hide the browser's default checkbox */
+.checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0; }
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee; }
+
+/* On mouse-over, add a grey background color */
+.checkbox:hover input ~ .checkmark {
+  background-color: #ccc; }
+
+/* When the checkbox is checked, add a blue background */
+.checkbox input:checked ~ .checkmark {
+  background-color: #2196F3; }
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none; }
+
+/* Show the checkmark when checked */
+.checkbox input:checked ~ .checkmark:after {
+  display: block; }
+
+/* Style the checkmark/indicator */
+.checkbox .checkmark:after {
+  left: 9px;
+  top: 5px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg); }
+
+#main-grid {
+  display: flex; }
+
+#manufacturers-list {
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  border: 1px, solid, gray;
+  width: 340px; }
+
+.manufacturer-image, .manufacturer-image-selected {
+  margin-bottom: 20px;
+  padding: 10px; }
+  .manufacturer-image-selected {
+    background-color: lightblue; }
+
+#laptops-grid {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 280px);
+  justify-content: center;
+  background-color: #d4d4d4;
+  grid-gap: 10px;
+  padding: 10px;
+  overflow-y: auto; }
+
+#compare-container {
+  display: flex; }
+
+#userform {
+  margin-bottom: 25px; }
+
+.userform-label {
+  width: 200px;
+  margin-top: 10px; }
+
+#order-info {
+  margin: 10px;
+  padding: 10px;
+  position: relative;
+  width: 340px; }
+
+.laptop-item, .laptop-item-selected {
+  background-color: white;
+  padding: 1em;
+  border: 1px, solid, gray;
+  border-radius: 10px; }
+  .laptop-item-selected {
+    background-color: lightblue; }
+
+#laptops-compare {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row; }

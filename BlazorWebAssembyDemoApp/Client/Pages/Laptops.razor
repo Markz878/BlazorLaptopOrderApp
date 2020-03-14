@@ -1,0 +1,85 @@
+﻿@page "/laptops"
+
+@if (LaptopList == null)
+{
+    <p>Loading...</p>
+}
+else
+{
+    @if (State == PageState.Listing)
+    {
+        <div id="main-grid">
+            <div id="manufacturers-list">
+                @foreach (var manufacturer in Manufacturers)
+                {
+                    <div @onclick="(()=>SelectManufacturer(manufacturer.Id))" class="@manufacturer.CSSClass">
+                        <img src="@manufacturer.ImageUrl" width="300" height="60" />
+                    </div>
+                }
+                <button @onclick="CompareSelectedLaptops" class="btn btn-primary" disabled=@(LaptopList.Where(x=>x.Compare).Count()==0)>Compare @LaptopList.Where(x => x.Compare).Count() items</button>
+                <button @onclick="ClearSelectedLaptops" class="btn btn-secondary" disabled=@(LaptopList.Where(x=>x.Compare).Count()==0)>Clear selection</button>
+            </div>
+            <div id="laptops-grid">
+                @if (SelectedManufacturer == null)
+                {
+                    @foreach (var laptop in LaptopList)
+                    {
+                        <LaptopDisplay @key="laptop.Id" Laptop="laptop" Id="@laptop.Id.ToString()" CompareCheckboxVisible="true" UpdateEvent="UpdateCompareValues" CSSClass="laptop-item" />
+
+                    }
+                }
+                else
+                {
+                    @foreach (var laptop in LaptopList.Where(x => x.Manufacturer.Id == SelectedManufacturer.Id))
+                    {
+                        <LaptopDisplay @key="laptop.Id" Laptop="laptop" Id="@laptop.Id.ToString()" CompareCheckboxVisible="true" UpdateEvent="UpdateCompareValues" CSSClass="laptop-item" />
+                    }
+                }
+            </div>
+        </div>
+
+    }
+    else if (State == PageState.Comparing)
+    {
+        <div id="compare-container">
+            <div id="order-info">
+                <h4>Order laptop:</h4>
+                @if (SelectedLaptop == null)
+                {
+                    <h4> </h4>
+                    <h4> </h4>
+                }
+                else
+                {
+                    <h4>@SelectedLaptop.Manufacturer.Name @SelectedLaptop.Name </h4>
+                    <h4>@SelectedLaptop.Price €</h4>
+                }
+                <EditForm Model="User" OnValidSubmit="SubmitOrder">
+                    <div id="userform">
+                        <InputComponent LabelClass="userform-label" Id="firstname" Label="First Name:" @bind-Value="User.FirstName" PlaceHolder="First Name" />
+                        <InputComponent LabelClass="userform-label" Id="lastname" Label="Last Name:" @bind-Value="User.LastName" PlaceHolder="Last Name" />
+                        <InputComponent LabelClass="userform-label" Id="email" Label="Email:" @bind-Value="User.Email" PlaceHolder="Email" />
+                    </div>
+                    <button class="btn btn-primary" type="submit">Order</button>
+                    <button class="btn btn-secondary" @onclick="ReturnToList">Return to list</button>
+                </EditForm>
+            </div>
+            <div id="laptops-compare">
+                @foreach (var laptop in LaptopList.Where(x => x.Compare))
+                {
+                    <LaptopDisplay @key="laptop.Id" Laptop="laptop" CompareCheckboxVisible="false" CSSClass="@(SelectedLaptop?.Id==laptop.Id ? "laptop-item-selected" : "laptop-item")" SelectLaptop="(x)=>SelectLaptop(x)" />
+                }
+            </div>
+        </div>
+    }
+    else if (State == PageState.Ordered)
+    {
+        <div>
+            <h3>Your order of @SelectedLaptop.Manufacturer.Name @SelectedLaptop.Name for @SelectedLaptop.Price € has been submitted.</h3>
+            <h3>Thank you for your order.</h3>
+            <button class="btn btn-primary" @onclick="ReturnToList">Return to list</button>
+        </div>
+    }
+}
+
+

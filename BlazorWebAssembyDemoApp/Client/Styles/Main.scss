@@ -1,0 +1,73 @@
+﻿@import 'CustomCheckBox';
+
+#main-grid {
+    display: flex;
+}
+
+#manufacturers-list {
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    border: 1px, solid, gray;
+    width: 340px;
+}
+
+.manufacturer-image {
+    margin-bottom: 20px;
+    padding: 10px;
+
+    &-selected {
+        @extend .manufacturer-image;
+        background-color: lightblue;
+    }
+}
+
+#laptops-grid {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 280px);
+    justify-content: center;
+    background-color: #d4d4d4;
+    grid-gap: 10px;
+    padding: 10px;
+    overflow-y:auto;
+
+}
+
+#compare-container {
+    display: flex;
+}
+
+#userform {
+    margin-bottom: 25px;
+}
+.userform-label {
+    width: 200px;
+    margin-top: 10px;
+}
+#order-info {
+    margin: 10px;
+    padding: 10px;
+    position: relative;
+    width: 340px;
+}
+
+.laptop-item {
+    background-color: white;
+    padding: 1em;
+    border: 1px, solid, gray;
+    border-radius: 10px;
+
+    &-selected {
+        @extend .laptop-item;
+        background-color: lightblue;
+    }
+}
+
+#laptops-compare {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+

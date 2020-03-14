@@ -1,0 +1,38 @@
+﻿@using BlazorWebAssembyDemoApp.Client.Models
+
+<div class="@CSSClass" @onclick="SelectItem">
+    <img src="@Laptop.ImageUrl" width="250" height="200" style="margin-bottom: 10px;"/>
+    <h4>@Laptop.Manufacturer.Name @Laptop.Name</h4>
+    <p><b>Price: @Laptop.Price €</b></p>
+    <p><b>Processor:@Laptop.Processor</b></p>
+    <p><b>GPU: @Laptop.GPU</b></p>
+    <p><b>SSD Memory: @Laptop.Memory Gt</b></p>
+    <p><b>Ram: @Laptop.Ram Gt</b></p>
+    @if (CompareCheckboxVisible)
+    {
+        <label for="@Id">Compare <input id="@Id" type="checkbox" checked="@Laptop.Compare" @onchange="CompareCheckboxChanged" style="padding-top: 10px;"/></label>
+    }
+</div>
+
+@code {
+    [Parameter] public string Id { get; set; } 
+    [Parameter] public LaptopCompareModel Laptop { get; set; }
+    [Parameter] public bool CompareCheckboxVisible { get; set; }
+    [Parameter] public string CSSClass { get; set; }
+    [Parameter] public EventCallback<LaptopCompareModel> SelectLaptop { get; set; }
+    [Parameter] public EventCallback UpdateEvent { get; set; }
+
+    private void CompareCheckboxChanged()
+    {
+        Laptop.Compare = !Laptop.Compare;
+        UpdateEvent.InvokeAsync(null);
+    }
+
+    private void SelectItem()
+    {
+        if (!CompareCheckboxVisible)
+        {
+            SelectLaptop.InvokeAsync(Laptop);
+        }
+    }
+}
