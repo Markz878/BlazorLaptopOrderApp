@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BlazorWebAssembyDemoApp.Client
+namespace BlazorLaptopOrder.Client
 {
     public class Program
     {
@@ -15,7 +15,6 @@ namespace BlazorWebAssembyDemoApp.Client
             builder.RootComponents.Add<App>("app");
 
             builder.Services.AddBaseAddressHttpClient();
-            builder.Services.AddApiAuthorization();
 
             await builder.Build().RunAsync();
         }

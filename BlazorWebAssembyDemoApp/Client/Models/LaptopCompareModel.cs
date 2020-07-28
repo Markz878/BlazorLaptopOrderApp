@@ -1,6 +1,6 @@
-﻿using BlazorWebAssembyDemoApp.Shared;
+﻿using BlazorLaptopOrder.Shared;
 
-namespace BlazorWebAssembyDemoApp.Client.Models
+namespace BlazorLaptopOrder.Client.Models
 {
     public class LaptopCompareModel : LaptopModel
     {

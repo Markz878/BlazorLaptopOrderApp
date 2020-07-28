@@ -21,7 +21,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="3.2.0-preview2.20160.5" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Shared\BlazorWebAssembyDemoApp.Shared.csproj" />
+    <ProjectReference Include="..\Shared\BlazorLaptopOrder.Shared.csproj" />
   </ItemGroup>
 
 </Project>

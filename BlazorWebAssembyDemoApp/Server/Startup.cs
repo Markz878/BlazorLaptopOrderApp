@@ -11,10 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System.Linq;
-using BlazorWebAssembyDemoApp.Server.Data;
-using BlazorWebAssembyDemoApp.Server.Models;
+using BlazorLaptopOrder.Server.Data;
 
-namespace BlazorWebAssembyDemoApp.Server
+namespace BlazorLaptopOrder.Server
 {
     public class Startup
     {
@@ -29,28 +28,8 @@ namespace BlazorWebAssembyDemoApp.Server
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-
             services.AddDbContext<LaptopsContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Password.RequireDigit = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequiredLength = 5;
-                options.Password.RequireUppercase = false;
-                options.Password.RequireLowercase = false;
-            });
-
-            services.AddIdentityServer()
-                .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-            services.AddAuthentication()
-                .AddIdentityServerJwt();
 
             services.AddControllersWithViews();
             services.AddRazorPages();
@@ -77,10 +56,6 @@ namespace BlazorWebAssembyDemoApp.Server
             app.UseStaticFiles();
 
             app.UseRouting();
-
-            app.UseAuthentication();
-            app.UseIdentityServer();
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

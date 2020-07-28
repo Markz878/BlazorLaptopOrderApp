@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\BlazorWebAssembyDemoApp.Client.csproj" />
-    <ProjectReference Include="..\Shared\BlazorWebAssembyDemoApp.Shared.csproj" />
+    <ProjectReference Include="..\Client\BlazorLaptopOrder.Client.csproj" />
+    <ProjectReference Include="..\Shared\BlazorLaptopOrder.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +24,10 @@
     <PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="3.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Migrations\" />
   </ItemGroup>
 
 </Project>

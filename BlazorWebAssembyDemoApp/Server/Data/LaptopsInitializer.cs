@@ -1,9 +1,9 @@
-﻿using BlazorWebAssembyDemoApp.Shared;
+﻿using BlazorLaptopOrder.Shared;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BlazorWebAssembyDemoApp.Server.Data
+namespace BlazorLaptopOrder.Server.Data
 {
 
     public static class LaptopsInitializer

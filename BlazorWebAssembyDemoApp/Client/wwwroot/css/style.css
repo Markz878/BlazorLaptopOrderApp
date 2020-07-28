@@ -61,17 +61,28 @@
   display: flex; }
 
 #manufacturers-list {
+  display: flex;
+  flex-direction: column;
   margin: 10px;
   padding: 10px;
   position: relative;
-  border: 1px, solid, gray;
-  width: 340px; }
+  border: 1px, solid, gray; }
 
 .manufacturer-image, .manufacturer-image-selected {
-  margin-bottom: 20px;
-  padding: 10px; }
+  margin: 10px 0; }
   .manufacturer-image-selected {
     background-color: lightblue; }
+  @media (max-width: 767.98px) {
+    .manufacturer-image, .manufacturer-image-selected {
+      width: 200px;
+      height: 40px; } }
+  @media (min-width: 768px) {
+    .manufacturer-image, .manufacturer-image-selected {
+      width: 300px;
+      height: 60px; } }
+
+.compare-button {
+  margin: 5px; }
 
 #laptops-grid {
   flex-grow: 1;

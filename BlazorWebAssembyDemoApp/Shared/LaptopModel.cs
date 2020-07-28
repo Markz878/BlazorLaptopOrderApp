@@ -1,4 +1,4 @@
-﻿namespace BlazorWebAssembyDemoApp.Shared
+﻿namespace BlazorLaptopOrder.Shared
 {
     public class LaptopModel
     {

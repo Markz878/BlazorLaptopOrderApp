@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BlazorWebAssembyDemoApp.Shared
+namespace BlazorLaptopOrder.Shared
 {
     public class UserModel
     {

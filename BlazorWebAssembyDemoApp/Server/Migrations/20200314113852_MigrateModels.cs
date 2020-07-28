@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace BlazorWebAssembyDemoApp.Server.Migrations
+namespace BlazorLaptopOrder.Server.Migrations
 {
     public partial class MigrateModels : Migration
     {

@@ -24,12 +24,10 @@ else
 
             @foreach (var manufacturer in Manufacturers)
             {
-                <div @onclick="(()=>SelectManufacturer(manufacturer.Id))" class="@manufacturer.CSSClass">
-                    <img src="@manufacturer.ImageUrl" width="300" height="60" />
-                </div>
+                <img src="@manufacturer.ImageUrl" @onclick="(()=>SelectManufacturer(manufacturer.Id))" class="@manufacturer.CSSClass"/>
             }
-            <button @onclick="CompareSelectedLaptops" class="btn btn-primary" disabled=@(LaptopList.Where(x=>x.Compare).Count()==0)>Compare @LaptopList.Where(x => x.Compare).Count() items</button>
-            <button @onclick="ClearSelectedLaptops" class="btn btn-secondary" disabled=@(LaptopList.Where(x=>x.Compare).Count()==0)>Clear selection</button>
+            <button @onclick="CompareSelectedLaptops" class="btn btn-primary compare-button" disabled=@(LaptopList.Where(x=>x.Compare).Count()==0)>Compare @LaptopList.Where(x => x.Compare).Count() items</button>
+            <button @onclick="ClearSelectedLaptops" class="btn btn-secondary compare-button" disabled=@(LaptopList.Where(x=>x.Compare).Count()==0)>Clear selection</button>
         </div>
         <div id="laptops-grid">
             @foreach (var laptop in GetSortedLaptops())

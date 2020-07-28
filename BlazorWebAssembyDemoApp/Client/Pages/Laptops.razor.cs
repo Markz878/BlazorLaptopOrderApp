@@ -1,5 +1,5 @@
-﻿using BlazorWebAssembyDemoApp.Client.Models;
-using BlazorWebAssembyDemoApp.Shared;
+﻿using BlazorLaptopOrder.Client.Models;
+using BlazorLaptopOrder.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
@@ -10,13 +10,12 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Collections.Generic;
 
-namespace BlazorWebAssembyDemoApp.Client.Pages
+namespace BlazorLaptopOrder.Client.Pages
 {
     public partial class Laptops
     {
 
         [Inject] public NavigationManager Navigation { get; set; }
-        [Inject] public IAccessTokenProvider AuthenticationService { get; set; }
         public LaptopCompareModel[] LaptopList { get; set; }
         public ManufacturerViewModel[] Manufacturers { get; set; }
         public LaptopCompareModel SelectedLaptop { get; set; }
@@ -50,19 +49,10 @@ namespace BlazorWebAssembyDemoApp.Client.Pages
                 BaseAddress = new Uri(Navigation.BaseUri)
             };
 
-            var tokenResult = await AuthenticationService.RequestAccessToken();
-            if (tokenResult.TryGetToken(out var token))
-            {
-                httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token.Value}");
-                var laptopList = await httpClient.GetJsonAsync<LaptopModel[]>("api/laptops");
-                LaptopList = laptopList.Select(x => new LaptopCompareModel() { Id = x.Id, Name = x.Name, Manufacturer = x.Manufacturer, GPU = x.GPU, ImageUrl = x.ImageUrl, Memory = x.Memory, Price = x.Price, Processor = x.Processor, Ram = x.Ram, Rating = x.Rating }).ToArray();
-                var manufacturers = await httpClient.GetJsonAsync<ManufacturerModel[]>("api/manufacturers");
-                Manufacturers = manufacturers.Select(x => new ManufacturerViewModel() { Id = x.Id, Name = x.Name, ImageUrl = x.ImageUrl, CSSClass = "manufacturer-image" }).ToArray();
-            }
-            else
-            {
-                Navigation.NavigateTo(tokenResult.RedirectUrl);
-            }
+            var laptopList = await httpClient.GetJsonAsync<LaptopModel[]>("api/laptops");
+            LaptopList = laptopList.Select(x => new LaptopCompareModel() { Id = x.Id, Name = x.Name, Manufacturer = x.Manufacturer, GPU = x.GPU, ImageUrl = x.ImageUrl, Memory = x.Memory, Price = x.Price, Processor = x.Processor, Ram = x.Ram, Rating = x.Rating }).ToArray();
+            var manufacturers = await httpClient.GetJsonAsync<ManufacturerModel[]>("api/manufacturers");
+            Manufacturers = manufacturers.Select(x => new ManufacturerViewModel() { Id = x.Id, Name = x.Name, ImageUrl = x.ImageUrl, CSSClass = "manufacturer-image" }).ToArray();
         }
 
         void UpdateCompareValues()

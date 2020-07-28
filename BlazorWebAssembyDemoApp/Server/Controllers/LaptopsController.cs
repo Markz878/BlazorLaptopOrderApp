@@ -1,14 +1,13 @@
-﻿using BlazorWebAssembyDemoApp.Server.Data;
-using BlazorWebAssembyDemoApp.Shared;
+﻿using BlazorLaptopOrder.Server.Data;
+using BlazorLaptopOrder.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BlazorWebAssembyDemoApp.Server.Controllers
+namespace BlazorLaptopOrder.Server.Controllers
 {
-    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class LaptopsController : ControllerBase

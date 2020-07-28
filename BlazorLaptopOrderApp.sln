@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29827.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssembyDemoApp.Server", "BlazorWebAssembyDemoApp\Server\BlazorWebAssembyDemoApp.Server.csproj", "{1086C45D-8EE9-489D-BB1E-5BEBD06BB840}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLaptopOrder.Server", "BlazorWebAssembyDemoApp\Server\BlazorLaptopOrder.Server.csproj", "{1086C45D-8EE9-489D-BB1E-5BEBD06BB840}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssembyDemoApp.Client", "BlazorWebAssembyDemoApp\Client\BlazorWebAssembyDemoApp.Client.csproj", "{3696FCA1-BB3C-4DDA-956E-ABD677E24CDB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLaptopOrder.Client", "BlazorWebAssembyDemoApp\Client\BlazorLaptopOrder.Client.csproj", "{3696FCA1-BB3C-4DDA-956E-ABD677E24CDB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssembyDemoApp.Shared", "BlazorWebAssembyDemoApp\Shared\BlazorWebAssembyDemoApp.Shared.csproj", "{422A4144-67EC-4C91-BB1F-4C32C19AF105}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorLaptopOrder.Shared", "BlazorWebAssembyDemoApp\Shared\BlazorLaptopOrder.Shared.csproj", "{422A4144-67EC-4C91-BB1F-4C32C19AF105}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
